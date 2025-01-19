@@ -58,3 +58,13 @@ getComputerChoice();
 
 let getHumanChoice = prompt("Rock, Paper, or Scissors?");
 console.log(getHumanChoice);
+
+
+// Step 4: Declare the players score variables
+// Your game will keep track of the players score. You will write variables to keep track of the players score.
+
+// Create two new variables named humanScore and computerScore in the global scope.
+// Initialize those variables with the value of 0.
+
+let humanScore = 0;
+let computerScore = 0;
