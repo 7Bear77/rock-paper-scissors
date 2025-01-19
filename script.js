@@ -30,10 +30,13 @@ let getComputerChoice = () => {
     let result = (Math.floor(Math.random() * 3) + 1);
     if (result === 1) {
         console.log("Rock");
+        return "Rock";
     } else if(result === 2) {
         console.log("Paper");
+        return "Paper";
     } else if(result === 3) {
         console.log("Scissors")
+        return "Scissors";
     } else {
         console.log("Houston, we have a problem")
     }
@@ -41,3 +44,17 @@ let getComputerChoice = () => {
 getComputerChoice();
 
 // not sure how to make this work in an arrow function...GOT IT!
+
+// Step 3: Write the logic to get the human choice
+// Your game will be played by a human player. You will write a function that takes the user choice and returns it.
+
+// Create a new function named getHumanChoice.
+// Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
+// Hint: Use the prompt method to get the user’s input.
+// Test what your function returns by using console.log.
+
+// getHumanChoice
+// Ask the user which option they will pick, it might be easiest to provide three options to the user so that they can't beef it
+
+let getHumanChoice = prompt("Rock, Paper, or Scissors?");
+console.log(getHumanChoice);
