@@ -1,57 +1,3 @@
-// let humanScore = 0;
-// let computerScore = 0;
-
-// let getComputerChoice = () => {
-//     let result = (Math.floor(Math.random() * 3) + 1);
-//     if (result === 1) {
-//         console.log("getComputerChoice is rock"); //here for debugging as necessary
-//         return "rock";
-//     } else if(result === 2) {
-//         console.log("getComputerChoice is paper"); //here for debugging as necessary
-//         return "paper";
-//     } else if(result === 3) {
-//         console.log("getComputerChoice is scissors"); //here for debugging as necessary
-//         return "scissors";
-//     } else {
-//         console.log("Houston, we have a problem"); //just in case
-//     }
-// }
-
-// function getHumanChoice() {
-//     return prompt("Rock, Paper, or Scissors?", "").toLowerCase();
-// }
-
-
-// // let getHumanChoice = prompt("Rock, Paper, or Scissors?", "");
-// console.log(getHumanChoice() + ' is getHumanChoice');
-
-// let humanChoice = getHumanChoice();
-// console.log(humanChoice + ' is the humanChoice');
-// let computerChoice = getComputerChoice();
-// console.log(computerChoice + ' is the computerChoice');
-
-// function playRound(humanChoice, computerChoice) {
-//     if (humanChoice === computerChoice) {
-//         console.log(`TIE! You both chose ${humanChoice}!`);
-//     } else if (humanChoice === "rock" && computerChoice === "scissors") {
-//         console.log(`WINNER! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
-//         humanScore++;
-//     } else if (humanChoice === "paper" && computerChoice === "rock") {
-//         console.log(`WINNER! You chose ${humanChoice} and the computer chose ${computerChoice}!`)
-//         humanScore++;
-//     } else if (humanChoice === "scissors" && computerChoice === "paper") {
-//         console.log(`WINNER! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
-//         humanScore++;
-//     } else {
-//         console.log(`LOSER! You chose ${humanChoice} and the computer beat you with ${computerChoice}!`)
-//         computerScore++;
-//     }
-// }
-
-// playRound(humanChoice, computerChoice);
-// console.log(humanScore + ' is the humanScore');
-// console.log(computerScore + ' is the computerScore');
-
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     if (choice === 0) {
@@ -70,8 +16,8 @@ function getHumanChoice() {
     return prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
 }
 
-let humanSelection;// = getHumanChoice();
-let computerSelection;// = getComputerChoice();
+let humanSelection;
+let computerSelection;
 
 function playGame() {
 
