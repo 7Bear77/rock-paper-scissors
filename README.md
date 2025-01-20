@@ -57,3 +57,67 @@ Play 5 rounds by calling playRound 5 times.
 Hint: When you assign a function call to a variable, the return value of that function is assigned to the variable. Accessing the variable afterward will only provide the assigned value; it doesn’t recall the function. You need to recall the choice functions to get new choices for each round.
 Re-work your previous functions or create more helper functions if necessary. Specifically, you may want to change the return values to something more useful.
 If you already know about loops, you can use them. If not, don’t worry! Loops will be covered in the next lesson.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let humanScore = 0;
+let computerScore = 0;
+
+let getComputerChoice = () => {
+    let result = (Math.floor(Math.random() * 3) + 1);
+    if (result === 1) {
+        console.log("getComputerChoice is rock"); //here for debugging as necessary
+        return "rock";
+    } else if(result === 2) {
+        console.log("getComputerChoice is paper"); //here for debugging as necessary
+        return "paper";
+    } else if(result === 3) {
+        console.log("getComputerChoice is scissors"); //here for debugging as necessary
+        return "scissors";
+    } else {
+        console.log("Houston, we have a problem"); //just in case
+    }
+}
+
+function getHumanChoice() {
+    return prompt("Rock, Paper, or Scissors?", "").toLowerCase();
+}
+
+
+// let getHumanChoice = prompt("Rock, Paper, or Scissors?", "");
+console.log(getHumanChoice() + ' is getHumanChoice');
+
+let humanChoice = getHumanChoice();
+console.log(humanChoice + ' is the humanChoice');
+let computerChoice = getComputerChoice();
+console.log(computerChoice + ' is the computerChoice');
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`TIE! You both chose ${humanChoice}!`);
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+        console.log(`WINNER! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+        humanScore++;
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
+        console.log(`WINNER! You chose ${humanChoice} and the computer chose ${computerChoice}!`)
+        humanScore++;
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
+        console.log(`WINNER! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+        humanScore++;
+    } else {
+        console.log(`LOSER! You chose ${humanChoice} and the computer beat you with ${computerChoice}!`)
+        computerScore++;
+    }
+}
+
+playRound(humanChoice, computerChoice);
+console.log(humanScore + ' is the humanScore');
+console.log(computerScore + ' is the computerScore');
+
+
+Project: Rock-Paper-Scissors
+Lesson Link: https://www.theodinproject.com/lessons/foundations-rock-paper-scissors
+Code:
+Issue: I'm unsure on which direction to go for the final step. I can't seem to get the game to play more than one round.
+What I expected:
+What I've tried: I've tried introducing a roundsPlayed variable with an if..else function that increases roundsPlayed and calls the playRound function again, but this won't allow the comput
