@@ -26,22 +26,8 @@
 
 // adjust the arrow function
 
-let getComputerChoice = () => {
-    let result = (Math.floor(Math.random() * 3) + 1);
-    if (result === 1) {
-        console.log("Rock");
-        return "Rock";
-    } else if(result === 2) {
-        console.log("Paper");
-        return "Paper";
-    } else if(result === 3) {
-        console.log("Scissors")
-        return "Scissors";
-    } else {
-        console.log("Houston, we have a problem")
-    }
-}
-getComputerChoice();
+
+
 
 // not sure how to make this work in an arrow function...GOT IT!
 
@@ -56,8 +42,7 @@ getComputerChoice();
 // getHumanChoice
 // Ask the user which option they will pick, it might be easiest to provide three options to the user so that they can't beef it
 
-let getHumanChoice = prompt("Rock, Paper, or Scissors?");
-console.log(getHumanChoice);
+
 
 
 // Step 4: Declare the players score variables
@@ -66,5 +51,69 @@ console.log(getHumanChoice);
 // Create two new variables named humanScore and computerScore in the global scope.
 // Initialize those variables with the value of 0.
 
+// Step 5: Write the logic to play a single round
+// Your game will be played round by round. You will write a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner’s score and logs a winner announcement.
+
+// Create a new function named playRound.
+// Define two parameters for playRound: humanChoice and computerChoice. Use these two parameters to take the human and computer choices as arguments.
+// Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations.
+// Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
+// Increment the humanScore or computerScore variable based on the round winner.
+
 let humanScore = 0;
 let computerScore = 0;
+
+// initial function that i'm struggling witj
+let getComputerChoice = () => {
+    let result = (Math.floor(Math.random() * 3) + 1);
+    if (result === 1) {
+        console.log("rock"); //here for debugging as necessary
+        return "rock";
+    } else if(result === 2) {
+        console.log("paper"); //here for debugging as necessary
+        return "paper";
+    } else if(result === 3) {
+        console.log("scissors"); //here for debugging as necessary
+        return "scissors";
+    } else {
+        console.log("Houston, we have a problem"); //just in case
+    }
+}
+// getComputerChoice(); //Here for debugging currently.
+
+let getHumanChoice = prompt("Rock, Paper, or Scissors?", "");
+console.log(getHumanChoice);
+
+// Initialize a function playRound
+// Define two parameters for the function, humanChoice, and computerChoice ***This is where I messed up earlier perhaps
+// Compute the results
+// Compare the results to determine the outcome
+// Increment the score of the winner if applicable
+// console.log the results
+
+const humanChoice = getHumanChoice.toLowerCase();
+console.log(humanChoice);
+const computerChoice = getComputerChoice();
+console.log(computerChoice);
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`TIE! You both chose ${humanChoice}!`);
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+        console.log("WINNER! Rock smashes Scissors!");
+        humanScore++;
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
+        console.log("WINNER! Paper covers Rock!")
+        humanScore++;
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
+        console.log("WINNER! Scissors cuts Paper!");
+        humanScore++;
+    } else {
+        console.log("Next time you should be better!")
+        computerScore++;
+    }
+}
+
+playRound(humanChoice, computerChoice);
+console.log(humanScore);
+console.log(computerScore);
