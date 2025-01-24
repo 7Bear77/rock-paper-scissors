@@ -1,76 +1,59 @@
-function getComputerChoice() {
-    let choice = Math.floor(Math.random() * 3);
-    if (choice === 0) {
-        console.log("rock selected by computer");
-        return "rock";
-    } else if (choice === 1) {
-        console.log("paper selected by computer");
-        return "paper";
+const startGame = document.querySelector("#start");
+
+const gameChoices = document.querySelectorAll(".gameChoice");
+const choices = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
+let humanChoice;
+let computerChoice;
+
+function startGame() {
+    document.getElementById("#start").style.display = "none";
+    document.getElementById(".gameChoice").style.display = "block";
+}
+
+// When player selects a button, play a round of the game
+gameChoices.forEach(button => button.addEventListener("click", () => {
+    humanChoice = button.id;
+    computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    playRound();
+}))
+
+
+// Logic to determine winner of each round of play (making a selection)
+function playRound() {
+    if (humanChoice === computerChoice) {
+        console.log(`TIE! Both players selected ${humanChoice}!`);
+        console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+    } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
+        console.log(`WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`);
+        playerScore++;
+        console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+        console.log(`WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`);
+        playerScore++;
+        console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+        console.log(`WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`);
+        playerScore++;
+        console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
     } else {
-        console.log("scissors selected by computer");
-        return "scissors";
+        console.log(`LOSER! You chose ${humanChoice}, computer chose ${computerChoice}! Better luck next time!`);
+        computerScore++;
+        console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
     }
 }
 
-function getHumanChoice() {
-    return prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
-}
+// function playGame() {
+//     let roundsPlayed = 0;
 
-let humanSelection;
-let computerSelection;
+//     while (roundsPlayed < 5) {
+//         playRound(humanChoice, computerChoice);
+//         roundsPlayed++;
+//     }
 
-function playGame() {
-
-    let humanScore = 0;
-    let computerScore = 0;
-    let roundsPlayed = 0;
-
-    function playRound(humanChoice, computerChoice) {
-        humanSelection = getHumanChoice();
-        computerSelection = getComputerChoice();
-        if (humanSelection === computerSelection) {
-            console.log(`TIE! You both chose ${humanSelection}!`);
-            console.log(humanScore, computerScore);
-            roundsPlayed++;
-            console.log(roundsPlayed);
-        } else if (humanSelection === 'rock' && computerSelection === 'scissors') {
-            console.log(`WINNER! You chose ${humanSelection} and computer chose ${computerSelection}!`);
-            humanScore++;
-            console.log(humanScore, computerScore);
-            roundsPlayed++;
-            console.log(roundsPlayed);
-        } else if (humanSelection === 'paper' && computerSelection === 'rock') {
-            console.log(`WINNER! You chose ${humanSelection} and computer chose ${computerSelection}!`);
-            humanScore++;
-            console.log(humanScore, computerScore);
-            roundsPlayed++;
-            console.log(roundsPlayed);
-        } else if (humanSelection === 'scissors' && computerSelection === 'paper') {
-            console.log(`WINNER! You chose ${humanSelection} and computer chose ${computerSelection}!`);
-            humanScore++;
-            console.log(humanScore, computerScore);
-            roundsPlayed++;
-            console.log(roundsPlayed);
-        } else {
-            console.log(`LOSER! You chose ${humanSelection} and computer chose ${computerSelection}!`);
-            computerScore++;
-            console.log(humanScore, computerScore);
-            roundsPlayed++;
-            console.log(roundsPlayed);
-        }
-    }   
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    if (humanScore === computerScore) {
-        console.log('The game ends in a TIE');
-    } else if (humanScore > computerScore) {
-        console.log('You WIN the game');
-    } else {
-        console.log('You LOSE the game')
-    }
-}
-
-playGame();
+//     while (playerScore === computerScore) {
+//         console.log('TIES are for Europeans, try again maggot!');
+//         playRound(humanChoice, computerChoice);
+//     }
+// }
