@@ -1,16 +1,27 @@
 const startGame = document.querySelector("#start");
-
 const gameChoices = document.querySelectorAll(".gameChoice");
+let playerScoreText = document.querySelector(".playerScore");
+let computerScoreText = document.querySelector(".computerScore");
+let roundResultText = document.querySelector(".result");
+let playerScoreValue = document.querySelector(".playerScoreValue");
+let computerScoreValue = document.querySelector(".computerScoreValue");
+let resultText = document.querySelector(".resultText");
+
 const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 let humanChoice;
 let computerChoice;
 
-function startGame() {
-    document.getElementById("#start").style.display = "none";
-    document.getElementById(".gameChoice").style.display = "block";
-}
+// Start the game by removing the start button and adding the game to display
+document.getElementById("start").addEventListener("click", () => {
+    console.log("clicked");
+    startGame.style.display = "none";
+document.getElementById("rock").style.display = "block";
+document.getElementById("paper").style.display = "block";
+document.getElementById("scissors").style.display = "block";
+document.getElementById("text-container").style.display = "flex";
+});
 
 // When player selects a button, play a round of the game
 gameChoices.forEach(button => button.addEventListener("click", () => {
@@ -19,41 +30,36 @@ gameChoices.forEach(button => button.addEventListener("click", () => {
     playRound();
 }))
 
+// function to display score as it updates
+function calculateScore() {
+    playerScoreValue.innerHTML = playerScore;
+    computerScoreValue.innerHTML = computerScore;
+};
 
 // Logic to determine winner of each round of play (making a selection)
 function playRound() {
     if (humanChoice === computerChoice) {
-        console.log(`TIE! Both players selected ${humanChoice}!`);
+        resultText.innerHTML = `TIE! Both players selected ${humanChoice}!`;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
     } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-        console.log(`WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`);
+        resultText.innerHTML = `WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`;
         playerScore++;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+        calculateScore();
     } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        console.log(`WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`);
+        resultText.innerHTML = `WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`;
         playerScore++;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+        calculateScore();
     } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        console.log(`WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`);
+        resultText.innerHTML = `WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`;
         playerScore++;
-        console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+        resultText.innerHTML = 'Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!';
+        calculateScore();
     } else {
         console.log(`LOSER! You chose ${humanChoice}, computer chose ${computerChoice}! Better luck next time!`);
         computerScore++;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
+        calculateScore();
     }
 }
-
-// function playGame() {
-//     let roundsPlayed = 0;
-
-//     while (roundsPlayed < 5) {
-//         playRound(humanChoice, computerChoice);
-//         roundsPlayed++;
-//     }
-
-//     while (playerScore === computerScore) {
-//         console.log('TIES are for Europeans, try again maggot!');
-//         playRound(humanChoice, computerChoice);
-//     }
-// }

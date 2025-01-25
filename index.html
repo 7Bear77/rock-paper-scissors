@@ -9,10 +9,26 @@
 </head>
 <body>
     <div id="container">
-        <button id="start" class="startGame" onclick="startGame()">Rock, Paper, Scissors, SHOOT!</button>
+        <button id="start" class="startGame">Rock, Paper, Scissors, SHOOT!</button>
         <button id="rock" class="gameChoice">ROCK</button>
         <button id="paper" class="gameChoice">PAPER</button>
         <button id="scissors" class="gameChoice">SCISSORS</button>
+    </div>
+    <div id="text-container">
+        <div class="scores">
+            <div class="player">
+                <h2 class="playerScore">Player<br>Score</h2>
+                <p class="playerScoreValue">0</p>
+            </div>
+            <div class="computer">
+                <p class="computerScoreValue">0</p>
+                <h2 class="computerScore">Computer<br>Score</h2>
+            </div>
+        </div>
+        <div class="results">
+        <h4 class="result">Round Result: </h4>
+        <p class="resultText"></p>
+        </div>
     </div>
 </body>
 </html>
