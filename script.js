@@ -6,12 +6,54 @@ let roundResultText = document.querySelector(".result");
 let playerScoreValue = document.querySelector(".playerScoreValue");
 let computerScoreValue = document.querySelector(".computerScoreValue");
 let resultText = document.querySelector(".resultText");
+let gameOverText = document.querySelector("#gameOverText")
 
 const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 let humanChoice;
 let computerChoice;
+
+document.getElementById("restart").addEventListener("click", () => {
+    console.log("clicked");
+    document.getElementById("container").style.display = "flex";
+    document.getElementById("rock").style.display = "block";
+    document.getElementById("paper").style.display = "block";
+    document.getElementById("scissors").style.display = "block";
+    document.getElementById("text-container").style.display = "flex";
+    document.getElementById("gameOver").style.display = "none";
+});
+
+// Determine if the game has been won
+function isGameOver() {
+    if (playerScore >= 5) {
+        document.getElementById("rock").style.display = "none";
+        document.getElementById("paper").style.display = "none";
+        document.getElementById("scissors").style.display = "none";
+        document.getElementById("text-container").style.display = "none";
+        document.getElementById("container").style.display = "none";
+        document.getElementById("gameOver").style.display = "flex";
+        gameOverText.innerHTML = `YOU WIN! FINAL SCORE IS PLAYER: ${playerScore}, COMPUTER: ${computerScore}!`
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreValue.innerHTML = playerScore;
+        computerScoreValue.innerHTML = computerScore;
+    } else if (computerScore >= 5) {
+        document.getElementById("rock").style.display = "none";
+        document.getElementById("paper").style.display = "none";
+        document.getElementById("scissors").style.display = "none";
+        document.getElementById("text-container").style.display = "none";
+        document.getElementById("container").style.display = "none";
+        document.getElementById("gameOver").style.display = "flex";
+        gameOverText.innerHTML = `YOU LOSE! FINAL SCORE IS PLAYER: ${playerScore}, COMPUTER: ${computerScore}!`
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreValue.innerHTML = playerScore;
+        computerScoreValue.innerHTML = computerScore;
+    } else {
+        return;
+    }
+}
 
 // Start the game by removing the start button and adding the game to display
 document.getElementById("start").addEventListener("click", () => {
@@ -46,20 +88,24 @@ function playRound() {
         playerScore++;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
         calculateScore();
+        isGameOver();
     } else if (humanChoice === 'paper' && computerChoice === 'rock') {
         resultText.innerHTML = `WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`;
         playerScore++;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
         calculateScore();
+        isGameOver();
     } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
         resultText.innerHTML = `WINNER! You chose ${humanChoice}, computer chose ${computerChoice}!`;
         playerScore++;
         resultText.innerHTML = 'Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!';
         calculateScore();
+        isGameOver();
     } else {
         console.log(`LOSER! You chose ${humanChoice}, computer chose ${computerChoice}! Better luck next time!`);
         computerScore++;
         console.log('Player Score: ' + playerScore + '! Computer score: ' + computerScore + '!');
         calculateScore();
+        isGameOver();
     }
 }

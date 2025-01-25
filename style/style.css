@@ -40,8 +40,6 @@
 
 .scores {
     display: flex;
-    /* justify-content: space-around; */
-    /* justify-content: space-between; */
     justify-content: space-evenly;
     justify-self: center;
 }
@@ -67,4 +65,24 @@
     align-items: center;
     font-size: 20px;
     width: 80%;
+}
+
+#gameOver {
+    display: none;
+    width: 80vw;
+    height: 200px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-self: center;
+    margin: 20px 0 0 0;
+    border: 1px solid black;
+}
+
+#gameOver > h1, p {
+    justify-self: center;
+}
+
+.restart {
+    width: 20%;
 }
